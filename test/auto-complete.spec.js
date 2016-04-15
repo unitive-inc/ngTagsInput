@@ -35,6 +35,10 @@ describe('autoComplete directive', function() {
                 names.split(' ').forEach(function(name) { eventHandlers[name] = handler; });
                 return this;
             }),
+            first: jasmine.createSpy().and.callFake(function(names, handler) {
+                names.split(' ').forEach(function(name) { eventHandlers[name] = handler; });
+                return this;
+            }),
             getTags: jasmine.createSpy().and.returnValue([]),
             getCurrentTagText: jasmine.createSpy(),
             getOptions: jasmine.createSpy().and.returnValue({

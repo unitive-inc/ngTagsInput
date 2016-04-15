@@ -1975,6 +1975,7 @@ describe('tags-input directive', function() {
             expect(autocompleteObj).toEqual({
                 addTag: jasmine.any(Function),
                 on: jasmine.any(Function),
+                first: jasmine.any(Function),
                 getTags: jasmine.any(Function),
                 getCurrentTagText: jasmine.any(Function),
                 getOptions: jasmine.any(Function)

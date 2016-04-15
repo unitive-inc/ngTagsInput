@@ -215,7 +215,7 @@ tagsInput.directive('autoComplete', function($document, $timeout, $sce, $q, tags
                         suggestionList.load(value, tagsInput.getTags());
                     }
                 })
-                .on('input-keydown', function(event) {
+                .first('input-keydown', function(event) {
                     var key = event.keyCode,
                         handled = false;
 

@@ -105,24 +105,33 @@ tagsInput.factory('tiUtil', function($timeout, $q) {
 
     self.simplePubSub = function() {
         var events = {};
-        return {
-            on: function(names, handler) {
-                names.split(' ').forEach(function(name) {
-                    if (!events[name]) {
-                        events[name] = [];
-                    }
-                    events[name].push(handler);
-                });
-                return this;
-            },
-            trigger: function(name, args) {
-                var handlers = events[name] || [];
-                handlers.every(function(handler) {
-                    return self.handleUndefinedResult(handler, true)(args);
-                });
-                return this;
-            }
+        events.on = function(names, handler) {
+            names.split(' ').forEach(function(name) {
+                if (!events[name]) {
+                    events[name] = [];
+                }
+                events[name].push(handler);
+            });
+            return this;
         };
+        events.trigger = function(name, args) {
+            var handlers = events[name] || [];
+            handlers.every(function(handler) {
+                return self.handleUndefinedResult(handler, true)(args);
+            });
+            return this;
+        };
+        events.first = function(names, handler) {
+            names.split(' ').forEach(function(name) {
+                if (!events[name]) {
+                    events[name] = [];
+                }
+                events[name].unshift(handler);
+            });
+            return this;
+        };
+
+        return events;
     };
 
     return self;

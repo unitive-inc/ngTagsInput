@@ -221,6 +221,10 @@ tagsInput.directive('tagsInput', function($timeout, $document, $window, $q, tags
                     on: function(name, handler) {
                         $scope.events.on(name, handler);
                         return this;
+                    },
+                    first: function(name, handler) {
+                        $scope.events.first(name, handler);
+                        return this;
                     }
                 };
             };
